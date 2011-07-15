@@ -1,0 +1,63 @@
+A:link {
+	COLOR: #6b6b6b; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #6b6b6b; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #009933; TEXT-DECORATION: none
+}
+P {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #4a4a4a; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+TABLE {
+	BORDER-COLLAPSE: collapse
+}
+BODY {
+	SCROLLBAR-FACE-COLOR: #cfcfcf; MARGIN: 0px; SCROLLBAR-3DLIGHT-COLOR: #cfcfcf; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #cfcfcf; SCROLLBAR-BASE-COLOR: #cfcfcf; BACKGROUND-COLOR: #ffffff
+}
+TEXTAREA {
+	BORDER-RIGHT: #cccccc 1pt solid; BORDER-TOP: #cccccc 1pt solid; FONT-SIZE: 9pt; BORDER-LEFT: #cccccc 1pt solid; COLOR: #666666; BORDER-BOTTOM: #cccccc 1pt solid; FONT-FAMILY: "±¼¸²","µ¸¿ò"; BACKGROUND-COLOR: #ffffff
+}
+SELECT {
+	BORDER-RIGHT: #cccccc 1pt solid; BORDER-TOP: #cccccc 1pt solid; FONT-SIZE: 9pt; BORDER-LEFT: #cccccc 1pt solid; COLOR: #666666; BORDER-BOTTOM: #cccccc 1pt solid; FONT-FAMILY: "±¼¸²","µ¸¿ò"; BACKGROUND-COLOR: #ffffff
+}
+INPUT.t1 {
+	BORDER-RIGHT: #cccccc 1pt solid; BORDER-TOP: #cccccc 1pt solid; FONT-SIZE: 9pt; BORDER-LEFT: #cccccc 1pt solid; COLOR: #666666; BORDER-BOTTOM: #cccccc 1pt solid; FONT-FAMILY: "±¼¸²","µ¸¿ò"; BACKGROUND-COLOR: #ffffff
+}
+.price {
+	FONT-WEIGHT: bolder; FONT-SIZE: 12px; COLOR: #ff3334; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+.price_b {
+	FONT-WEIGHT: bolder; FONT-SIZE: 14px; COLOR: #ff4985; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+.s11 {
+	FONT-SIZE: 11px; COLOR: #4a4a4a; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+.p_name {
+	FONT-WEIGHT: bolder; FONT-SIZE: 14px; COLOR: #000000; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+.product_title {
+	FONT-WEIGHT: bolder; FONT-SIZE: 14px; COLOR: #ff6633; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+.category_title {
+	FONT-WEIGHT: bolder; FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+.blue {
+	FONT-WEIGHT: bolder; FONT-SIZE: 12px; COLOR: #0066cc; LINE-HEIGHT: 160%; FONT-FAMILY: "±¼¸²","µ¸¿ò"
+}
+.input {
+	BORDER-RIGHT: #cccccc 1pt solid; BORDER-TOP: #cccccc 1pt solid; FONT-SIZE: 9pt; BORDER-LEFT: #cccccc 1pt solid; COLOR: #545454; BORDER-BOTTOM: #cccccc 1pt solid; FONT-FAMILY: "±¼¸²","µ¸¿ò"; BACKGROUND-COLOR: #ffffff
+}
+INPUT.none {
+	BORDER-RIGHT: 1pt solid; BORDER-TOP: 1pt solid; FONT-SIZE: 9pt; BORDER-LEFT: 1pt solid; COLOR: #545454; BORDER-BOTTOM: 1pt solid; FONT-FAMILY: "±¼¸²","µ¸¿ò"; BACKGROUND-COLOR: #ffffff
+}
+.left_menu {
+	FONT-SIZE: 9pt; COLOR: #8b8b8b; LINE-HEIGHT: 160%; FONT-FAMILY: 
+}
+.line {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM: #cccccc 1px dotted; BORDER-RIGHT-WIDTH: 0px
+}

@@ -1,0 +1,112 @@
+BODY  {  
+	scrollbar-3dlight-color:B4B4B4;
+	scrollbar-arrow-color:333333;
+	scrollbar-base-color:EEEEEE;
+	scrollbar-darkshadow-color:FFFFFF;
+	scrollbar-face-color:eeeeee;
+	scrollbar-highlight-color:FFFFFF;
+	scrollbar-shadow-color:B4B4B4;
+}
+
+img                 { border:0px; }
+img.img_btn     { cursor:hand; border:0px; }
+
+ 
+input.search    { font-size:8pt; color:#736357; border:solid 1 #ffffff;background-color:#ECE9D8; height:15px;}
+input.nobox	 { font-family:±¼¸²; font-size:8pt; color:#33333; border:solid 0 #cccccc;background-color:trans; height:14px}
+select		     { font-size:8pt;color:#787878; border:solid 1 #DBDBDB;background-color:#ffffff;}
+ 
+.form1            { font-size:11px; border:solid 0 #D9D9D9; color:#7d7d7d ; padding-left:3px; padding-top:3px; background-color:fff3e7; font-family: "±¼¸²"}
+
+body            {FONT-SIZE: 9pt; COLOR: #666666; FONT-FAMILY: ±¼¸²; TEXT-DECORATION: none; line-height: 14pt;}
+tr                 {FONT-SIZE: 9pt; COLOR: #666666; FONT-FAMILY: ±¼¸²; TEXT-DECORATION: none; line-height: 14pt;}
+td                {FONT-SIZE: 9pt; COLOR: #666666; FONT-FAMILY: ±¼¸²; TEXT-DECORATION: none; line-height: 14pt;}
+ 
+
+A:link        {FONT-SIZE: 9pt; COLOR: #666666; FONT-FAMILY: ±¼¸²; TEXT-DECORATION: none; line-height: 11pt;}
+A:visited    {FONT-SIZE: 9pt; COLOR: #666666; FONT-FAMILY: ±¼¸²; TEXT-DECORATION: none; line-height: 11pt;}
+A:active     {FONT-SIZE: 9pt; COLOR: #666666; FONT-FAMILY: ±¼¸²; TEXT-DECORATION: none; line-height: 11pt;}
+A:hover     {FONT-SIZE: 9pt; COLOR: #666666; FONT-FAMILY: ±¼¸²; TEXT-DECORATION: none; line-height: 11pt;}
+ 
+.menu                  {font-family:±¼¸²; font-size: 9pt; color:#cccccc; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;font-weight:bold;}
+.menu     A:link     {font-family:±¼¸²; font-size: 9pt; color:#66cc33; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;font-weight:bold;}
+.menu    A:visited  {font-family:±¼¸²; font-size: 9pt; color:#66cc33; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;font-weight:bold;}
+.menu    A:hover   {font-family:±¼¸²; font-size: 9pt; color:#ff5735; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;font-weight:bold;}  
+
+.white                  {font-family:±¼¸²; font-size: 8pt; color:#FFFFFF; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;}
+.white    A:link      {font-family:±¼¸²; font-size: 8pt; color:#FFFFFF; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;}
+.white   A:visited  {font-family:±¼¸²; font-size: 8pt; color:#FFFFFF; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;}
+.white   A:hover   {font-family:±¼¸²; font-size: 8pt; color:#FFFFFF; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: underline;}
+
+.notice                  {font-family:±¼¸²; font-size: 8pt; color:#666666; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;}
+.notice    A:link      {font-family:±¼¸²; font-size: 8pt; color:#666666; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;}
+.notice    A:visited  {font-family:±¼¸²; font-size: 8pt; color:#666666; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: none;}
+.notice    A:hover   {font-family:±¼¸²; font-size: 8pt; color:#666666; line-height: 14pt; letter-spacing: 0px;  TEXT-DECORATION: underline;}
+
+
+
+
+
+ 
+
+.s_txt          {font-family:±¼¸²; font-size: 8pt; color:666666; line-height: 12pt; letter-spacing: 0px; TEXT-DECORATION: none;}
+.price         {font-family:±¼¸²; font-size: 9pt; color:488fc1; line-height: 12pt; letter-spacing: 0px; TEXT-DECORATION: none;font-weight:bold;}
+.conprice {
+        font-size:12px;
+	font-family:"±¼¸²","µ¸¿ò";
+	color:#FF3334;
+	line-height:160%;
+	font-weight:bolder;
+        text-decoration:line-through;
+}
+
+.price_b {
+	font-size:14px;
+	font-family:"±¼¸²","µ¸¿ò";
+	color:#FF4985;
+	line-height:160%;
+	font-weight:bolder;
+}
+
+.input {
+	font-size:9pt;
+	font-family:"±¼¸²","µ¸¿ò";
+	color:#545454;
+	border-width:1pt;
+	border-style:solid;
+	background-color:#ffffff;
+	border-color:#cccccc;
+}
+
+textarea,select,input.t1 {
+	font-size:9pt;
+	font-family:"±¼¸²","µ¸¿ò";
+	color:#666666;
+	border-width:1pt;
+	border-style:solid;
+	background-color:#ffffff;
+	border-color:#cccccc;
+
+}
+
+input.none
+{
+		font-size:9pt;
+		font-family:"±¼¸²","µ¸¿ò";
+		color:#545454;
+		border-width:1pt;
+		border-style:solid;
+		background-color:#ffffff;
+		;
+	}
+.p_title
+{
+	font-size: 11pt;
+	font-family:"±¼¸²","µ¸¿ò";
+                color:#663300;
+                border-width:0pt;
+                border-style:none;
+                background-color:#ffffff;
+                ;
+        }
+

@@ -1,0 +1,260 @@
+<!--
+
+###########################################################
+#                                                         #
+#  D O C U M E N T A T I O N                              #
+#                                                         #
+#  This code sample has been successfully tested on       #
+#  third-party web servers and performed according to     #
+#  documented Advanced Integration Method (AIM)           #
+#  standards.                                             #
+#                                                         #
+#  Last updated September 2004.                           #
+#                                                         #
+#  For complete and freely available documentation,       #
+#  please visit the Authorize.Net web site at:            #
+#                                                         #
+#  http://www.authorizenet.com/support/guides.php         #
+#                                                         #
+###########################################################
+
+###########################################################
+#                                                         #
+#  D I S C L A I M E R                                    #
+#                                                         #
+#  WARNING: ANY USE BY YOU OF THE SAMPLE CODE PROVIDED    #
+#  IS AT YOUR OWN RISK.                                   #
+#                                                         #
+#  Authorize.Net provides this code "as is" without       #
+#  warranty of any kind, either express or implied,       #
+#  including but not limited to the implied warranties    #
+#  of merchantability and/or fitness for a particular     #
+#  purpose.                                               #
+#                                                         #
+#                                                         #
+###########################################################
+
+###########################################################
+#                                                         #
+#  P R E R E Q U I S I T E S                              #
+#                                                         #
+#  Basically, all the required code to generate 1) a      #
+#  unique fingerprint, using the HMAC-MD5 algorithm,      #
+#  and 2) a compatible timestamp is included in the       #
+#  sample code provided in this file and the additional   #
+#  files that should have accompanied this file:          #
+#  - simdata.php                                          #
+#  - simlib.php                                           #
+#                                                         #
+#  However, you need to verify that the required PHP      #
+#  MHASH extension is available; otherwise, you will      #
+#  not be able to generate the required fingerprint.      #
+#                                                         #
+#  The required MHASH extension comes with PHP and        #
+#  requires no additional cost.                           #
+#                                                         #
+#  Most web hosting providers install this extension      #
+#  along with PHP; however, in some circumstances, you    #
+#  may have to enable it yourself or ask your web host    #
+#  to enable it for you.                                  #
+#                                                         #
+#  PLEASE UNDERSTAND that it is impossible for us to      #
+#  anticipate any and all possible web server             #
+#  configurations.                                        #
+#                                                         #
+#  If you cannot get the sample code to work due to an    #
+#  unknown server configuration or missing PHP extension, #
+#  and if you cannot figure out how to test for the       #
+#  availability of the required extension, consider       #
+#  hiring a professional web developer or server          #
+#  administrator.                                         #
+#                                                         #
+#  Authorize.Net is unable to assist you with web         #
+#  server troubleshooting.                                #
+#                                                         #
+#                                                         #
+###########################################################
+
+###########################################################
+#                                                         #
+#  C O N T A C T    I N F O R M A T I O N                 #
+#                                                         #
+#  For specific questions,                                #
+#  please contact Authorize.Net's Integration Services:   #
+#                                                         #
+#  integration at authorize dot net                       #
+#                                                         #
+#  Please remember that we cannot support individual      #
+#  e-commerce developers with programming problems and    #
+#  other issues that could be easily solved by referring  #
+#  to the available reference materials.                  #
+#                                                         #
+###########################################################
+
+###########################################################
+#                                                         #
+#  S I M   I N   A   N U T S H E L L                      #
+#                                                         #
+###########################################################
+#                                                         #
+#  1. You gather some basic transaction data on your web  #
+#  site.                                                  #
+#                                                         #
+#  2. Using a standard HTML form, you submit the required #
+#  information to Authorize.Net, by posting the form data #
+#  to a specific URL on Authorize.Net뭩 secure server.    #
+#                                                         #
+#  3. On Authorize.Net뭩 secure server, you collect all   #
+#  the financial information on the SIM Payment Form.     #
+#                                                         #
+#  4. When the transaction has been completed, you may    #
+#  either re-direct the user to another web page on your  #
+#  web site or complete the transaction on                #
+#  Authorize.Net뭩 secure server.                         #
+#                                                         #
+#                                                         #
+###########################################################
+
+###########################################################
+#                                                         #
+#  H A R D   C O D E D   V A L U E S                      #
+#                                                         #
+#  The purpose of this sample code is to demonstrate how  #
+#  a basic SIM transaction works.                         #
+#                                                         #
+#  For this purpose, we have hard-coded a number of       #
+#  values, to expedite your testing and integration       #
+#  efforts.                                               #
+#                                                         #
+#  Please, pay special attention to values, such as       #
+#  your log-in ID, transaction key, amount, description,  #
+#  etc. that may need to be changed throughout this       #
+#  code sample and/or its associated include files.       #
+#                                                         #
+#                                                         #
+###########################################################
+
+-->
+<?
+$x_Description = $HTTP_GET_VARS['x_Description'];
+$x_Amount = $HTTP_GET_VARS['x_Amount'];
+
+// *** IF YOU WANT TO PASS CURRENCY CODE do the following: ***
+// Assign the transaction currency (from your shopping cart) to $currencycode variable
+
+if ($x_Description == "")
+	$x_Description = $HTTP_POST_VARS['x_Description'];
+
+if ($x_Amount == "")
+	$x_Amount = $HTTP_POST_VARS['x_Amount'];
+
+?>
+<BR /><BR />
+<!--FORM action="https://test.authorize.net/gateway/transact.dll" method="POST"---->
+<!-- Uncomment the line ABOVE for test accounts or BELOW for live merchant accounts -->
+<FORM name=inform action="https://secure.authorize.net/gateway/transact.dll" method="POST"> 
+<?
+
+// authdata.php contains the loginid and x_tran_key.
+// You may use a more secure alternate method to store these (like a DB / registry).
+
+include ("simdata.php");
+include ("simlib.php");
+
+$amount = $x_Amount;
+
+// Trim $ sign if it exists
+if (substr($amount, 0,1) == "$") {
+	$amount = substr($amount,1);
+}
+// I would validate the Order here before generating a fingerprint
+
+// Seed random number for security and better randomness.
+
+srand(time());
+$sequence = rand(1, 1000);
+// Insert the form elements required for SIM by calling InsertFP
+//$ret = InsertFP ($loginid, $x_tran_key, $amount, $sequence);
+
+//*** IF YOU ARE PASSING CURRENCY CODE uncomment and use the following instead of the InsertFP invocation above  ***
+$ret = InsertFP ($loginid, $x_tran_key, $amount, $sequence, $currencycode);
+
+// Insert rest of the form elements similiar to the legacy weblink integration
+echo ("<input type=\"hidden\" name=\"x_description\" value=\"" . $x_Description . "\">\n" );
+echo ("<input type=\"hidden\" name=\"x_login\" value=\"" . $loginid . "\">\n");
+echo ("<input type=\"hidden\" name=\"x_amount\" value=\"" . $amount . "\">\n");
+
+// *** IF YOU ARE PASSING CURRENCY CODE uncomment the line below *****
+//echo ("<input type=\"hidden\" name=\"x_currency_code\" value=\"" . $currencycode . "\">\n");
+
+?>
+<INPUT type="hidden" name="x_show_form" value="PAYMENT_FORM">
+<INPUT type="hidden" name="x_test_request" value="TRUE">
+<INPUT type=hidden name=x_description         value="<?=$namedisplay?>">
+<INPUT type=hidden name=x_login               value="<?=$loginid?>">
+<INPUT type=hidden name=x_amount              value="<?=$amount?>">
+<!--INPUT type=hidden name=x_show_form           value="PAYMENT_FORM"-->
+<INPUT type=hidden name=x_Version             value="3.0">
+<input type=hidden name=x_Relay_URL           value="https://<?=$HTTP_HOST?>/shop/authorize.php">
+<input type=hidden name=x_Method              value="PC">
+<INPUT type=hidden name=x_Type                value=AUTH_CAPTURE>
+<INPUT type=hidden name=x_Invoice_num         value="<?=$orderid?>">
+<INPUT type=hidden name=x_Cust_ID             value="<?=$row->send_id?>">
+<INPUT type=hidden name=x_Currency_code	      value="KRW">
+<INPUT type=hidden name=x_First_Name          value="<?=$row->send_name?>">
+<INPUT type=hidden name=x_Last_Name           value="">
+<INPUT type=hidden name=x_Address             value="<?=$row->send_address?>">
+<INPUT type=hidden name=x_City                value="">
+<INPUT type=hidden name=x_State               value="">
+<INPUT type=hidden name=x_Zip                 value="<?=$row->send_post?>">
+<INPUT type=hidden name=x_Country             value="US">
+<INPUT type=hidden name=x_Phone               value="<?=$row->send_tphone?>">
+<INPUT type=hidden name=x_Fax                 value="">
+<INPUT type=hidden name=x_Email               value="<?=$row->send_email?>">
+
+<INPUT type=hidden name=x_Ship_to_first_name  value="<?=$row->rece_name?>">
+<INPUT type=hidden name=x_Ship_to_last_name   value="">
+<INPUT type=hidden name=x_Ship_to_address     value="<?=$row->rece_address?>">
+<INPUT type=hidden name=x_Ship_to_city        value="">
+<INPUT type=hidden name=x_Ship_to_state       value="">
+<INPUT type=hidden name=x_Ship_to_zip         value="<?=$row->rece_post?>">
+<INPUT type=hidden name=x_Ship_to_country     value="US">
+<INPUT type=hidden name=x_Ship_to_company     value="">
+<input type=hidden name=x_Email_Customer      value="FALSE">
+<INPUT type=hidden name=x_Test_Request        value="False">
+
+
+<table width="90%" border="0" cellspacing="0" cellpadding="0" height="30">
+<tr><td bgcolor="f5f5f5" width=180>Credit Card Number </td><td> <INPUT type=text name=x_card_num  value="">
+</td></tr>
+<tr><td bgcolor="f5f5f5">Credit Card Expiration Date </td><td> <INPUT type=text name=x_exp_date value="" size=4>(MMYY)
+<tr><td bgcolor="f5f5f5">CCV Code </td><td> <INPUT type=text name=x_card_code value="" size=4> 크레딧카드 뒷면 사인을 써넣는 부분에 있는 번호중 끝에있는 세 번호를 입력
+</td></tr>
+<tr>
+	<td colspan=2 height=3 background="/images/point1.gif"></td>
+</tr>
+<tr>
+	<td height=20></td>
+</tr></table>
+      <table width="100%" border="0" cellspacing="1" cellpadding="0">
+      <td colspan="4" height="3"></td>
+      </tr>
+      <tr> 
+      <td colspan="4" align="right">
+      <input type="image" src="/images/but_pay.gif">
+      <a href="/"><img src="/images/but_cancel.gif"border="0"></a>
+      </td>
+      </tr>
+      <tr> 
+      <td colspan="4" bgcolor="#DEDEDE"></td>
+      </tr>
+      <tr> 
+      <td colspan="4" height="10"></td>
+      </tr>
+      </table>
+
+
+<font color=white>4007000000027</font>
+</FORM>
+</BODY>
+</HTML>
